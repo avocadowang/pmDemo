@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>welcome</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/nifty.min.css" rel="stylesheet">
+		<link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+		<link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="assets/fuelux/css/tree-style.css" />
+		<link href="css/slidebars.css" rel="stylesheet">
+		<script src="js/jquery-2.2.4.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/nifty.min.js"></script>
+		<script src="js/demo/nifty-demo.min.js"></script>
+		<script>
+			jQuery(document).ready(function() {
+				TreeView.init();
+			});
+		</script>
+		<style type="text/css">
+			.menu-title {
+				font-size: 15px;
+				color: white;
+			}
+			
+			.legend-bottom {
+				bottom: -15px;
+			}
+			
+			#container .table td {
+				border-color: transparent;
+			}
+			
+			.chart {
+				padding-top: 30px;
+			}
+			
+			h3 {
+				margin: 10px auto;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				font-size: 20px;
+			}
+				.detailTabBtn {
+					margin: 8px 2px;
+					padding: 7px 12px;
+					border-radius: 20px;
+				}
+				
+				#detailTabCon {
+					display: none;
+					/*此处不能省略   否则详情页面会出现部分按钮点击不了*/
+					width: 80%;
+					position: absolute;
+					right: 1%;
+					z-index: 100;
+				}
+				.team_inf {
+					width: 70%;
+					position: absolute;
+					right: -1%;
+				}
+				
+				h3 {
+					margin: 10px auto;
+					font-family: "微软雅黑";
+					font-weight: bold;
+					font-size: 20px;
+				}
+				
+				.table-bordered th {
+					border-color: black;
+				}
+				
+				.pull-right .dropdown-menu {
+					left: 0;
+				}
+				
+				a {
+					cursor: pointer;
+				}
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="container" class="effect aside-float aside-bright mainnav-lg">
+			<!--NAVBAR-->
+			<!--===================================================-->
+			<header id="navbar">
+				<div id="navbar-container" class="boxed">
+
+					<!--Brand logo & name-->
+					<!--================================-->
+					<div class="navbar-header">
+						<a href="welcome.html" class="navbar-brand"> <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+							<div class="brand-title">
+								<span class="brand-text">中意资产 </span>
+							</div>
+						</a>
+					</div>
+					<!--================================-->
+
+					<div class="navbar-content clearfix">
+						<ul class="nav navbar-top-links pull-left">
+
+							<!--Navigation toogle button-->
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<li class="tgl-menu-btn">
+								<a class="mainnav-toggle" href="#">
+									<i class="demo-pli-view-list"></i>
+								</a>
+							</li>
+							<!--铃铛-->
+
+						</ul>
+						<ul class="nav navbar-top-links pull-right">
+							<!--User dropdown-->
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<li id="dropdown-user" class="dropdown">
+								<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+									<span class="pull-right">
+                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
+                                    <i class="demo-pli-male ic-user"></i>
+                                </span>
+									<div class="username hidden-xs">赵鹏</div>
+								</a>
+
+								<div class="dropdown-menu  dropdown-menu-left panel-default">
+									<!-- Dropdown footer -->
+									<div class="pad-all text-left">
+										<a href="pages-login.html" class="btn btn-primary">
+											<i class="demo-pli-unlock"></i> Logout
+										</a>
+									</div>
+								</div>
+							</li>
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<!--End user dropdown-->
+
+							<li>
+								<a href="#" class="aside-toggle navbar-aside-icon">
+									<i class="pci-ver-dots"></i>
+								</a>
+							</li>
+						</ul>
+
+					</div>
+					<!--================================-->
+					<!--End Navbar Dropdown-->
+
+				</div>
+			</header>
+			<!--===================================================-->
+			<!--END NAVBAR-->
+
+			<div class="boxed">
+
+				<!--CONTENT CONTAINER-->
+				<!--===================================================-->
+				
+				<aside id="aside-container">
+					<div id="aside">
+						<div class="nano has-scrollbar">
+							<div class="nano-content" tabindex="0" style="right: -15px;">
+
+								<!--Nav tabs-->
+								<!--================================-->
+								<ul class="nav nav-tabs nav-justified">
+									<li class="active">
+										<h3 class="panel-title">操作日志</h3>
+										<!--                                     <a href="#demo-asd-tab-1" data-toggle="tab"> -->
+										<!--                                         <i class="demo-pli-speech-bubble-7">  参与项目人员</i> -->
+										<!--                                     </a> -->
+									</li>
+									<!--                                 <li> -->
+									<!--                                     <a href="#demo-asd-tab-2" data-toggle="tab"> -->
+									<!--                                         <i class="demo-pli-information icon-fw"></i> Report -->
+									<!--                                     </a> -->
+									<!--                                 </li> -->
+									<!--                                 <li> -->
+									<!--                                     <a href="#demo-asd-tab-3" data-toggle="tab"> -->
+									<!--                                         <i class="demo-pli-wrench icon-fw"></i> Settings -->
+									<!--                                     </a> -->
+									<!--                                 </li> -->
+								</ul>
+								<!--================================-->
+								<!--End nav tabs-->
+
+								<!-- Tabs Content -->
+								<!--================================-->
+								<div class="tab-content">
+
+									<!--First tab (Contact list)-->
+									<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+									<div class="tab-pane fade in active" id="demo-asd-tab-1">
+										<div class="list-group bg-trans">
+											<a href="#" class="list-group-item">
+												<span class="badge badge-purple badge-icon badge-fw pull-left"></span>2016-11-28 &nbsp;&nbsp;&nbsp;中意资产-融汇集合资产管理产品（一期）&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《主动管理产品可行性研究报告》</span>&nbsp;&nbsp;&nbsp;完成
+											</a>
+											<a href="#" class="list-group-item">
+												<span class="badge badge-info badge-icon badge-fw pull-left"></span>2016-11-27&nbsp;&nbsp;&nbsp;中意资产-融汇集合资产管理产品（二期）&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《各部门会议记录》</span>&nbsp;&nbsp;&nbsp;完成
+											</a>
+											<a href="#" class="list-group-item">
+												<span class="badge badge-purple badge-icon badge-fw pull-left"></span>2016-11-26 &nbsp;&nbsp;&nbsp;中意资产管理有限责任公司-稳健创利3号&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《主动管理产品可行性研究报告》</span>&nbsp;&nbsp;&nbsp;完成
+											</a>
+											<a href="#" class="list-group-item">
+												<span class="badge badge-info badge-icon badge-fw pull-left"></span>2016-11-25&nbsp;&nbsp;&nbsp;	
+中意-浙江新昌钦寸水库项目债权投资计划&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《产品合同》</span>&nbsp;&nbsp;&nbsp;完成
+											</a><a href="#" class="list-group-item">
+												<span class="badge badge-purple badge-icon badge-fw pull-left"></span>2016-11-24 &nbsp;&nbsp;&nbsp;金葵花稳健增盈1号（招行北分）&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《产品托管方案》</span>&nbsp;&nbsp;&nbsp;完成
+											</a>
+											
+										</div>
+									</div>
+								</div>
+						</div>
+				</aside>
+				<!--===================================================-->
+				<nav id="mainnav-container">
+					<div id="mainnav">
+
+						<!--Menu-->
+						<!--================================-->
+						<div id="mainnav-menu-wrap">
+							<div class="nano">
+								<div class="nano-content" style="background-color: rgb(156, 35, 41);">
+
+									<!--Profile Widget-->
+									<!--================================-->
+									<div id="mainnav-profile" class="mainnav-profile">
+										<div class="profile-wrap">
+											<div class="pad-btm">
+												<img class="img-circle img-sm img-border" src="img/profile-photos/1.png" alt="Profile Picture">
+											</div>
+											<a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false"> <span class="pull-right dropdown-toggle"> 
+										</span>
+												<p class="mnp-name">赵鹏</p>
+												<p class="mnp-name">信息科技中心</p>
+											</a>
+										</div>
+									</div>
+
+									<ul id="mainnav-menu" class="list-group">
+
+										<!--Menu list item-->
+										<li>
+											<a href="#"> <i class="demo-psi-receipt-4"></i> <span class="menu-title">查询管理</span> <i class="arrow"></i>
+											</a>
+											<!--Submenu-->
+											<ul class="collapse">
+												<li>
+													<a href="myProtect.html">我的项目</a>
+												</li>
+												<li>
+													<a href="ui-panels.html">查找项目</a>
+												</li>
+												<li>
+													<a href="ui-modals.html">按人员查看</a>
+												</li>
+												<li>
+													<a href="ui-progress-bars.html">查找项目-管理员</a>
+												</li>
+												<li>
+													<a href="ui-components.html">项目搜索（功能演示）</a>
+												</li>
+
+											</ul>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="#"> <i class="demo-psi-pen-5"></i> <span class="menu-title">统计报表</span> <i class="arrow"></i>
+											</a>
+											<!--Submenu-->
+											<ul class="collapse">
+												<li>
+													<a href="forms-general.html">工作量统计</a>
+												</li>
+												<li>
+													<a href="forms-components.html">项目跟踪表</a>
+												</li>
+
+											</ul>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="#"> <i class="demo-psi-receipt-4"></i> <span class="menu-title">项目管理</span> <i class="arrow"></i>
+											</a>
+											<!--Submenu-->
+											<ul class="collapse">
+												<li class="active-link">
+													<a href="firstpage_left.html">投行类产品</a>
+												</li>
+
+											</ul>
+										</li>
+
+										<li class="list-divider"></li>
+								</div>
+							</div>
+						</div>
+						<!--================================-->
+					</div>
+				</nav>
+				
+				</div>
+
+				<!-- FOOTER -->
+				<!--===================================================-->
+				<footer id="footer">
+					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+					<div class="show-fixed pull-right">
+						You have
+						<a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending action.</a>
+					</div>
+					<div class="hide-fixed pull-right pad-rgt"></div>
+
+					<p class="pad-lft">&#0169; 2016 中意资产</p>
+
+				</footer>
+				<button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+			</div>
+	</body>
+</html>

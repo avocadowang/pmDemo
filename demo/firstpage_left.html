@@ -1,0 +1,2657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nifty首页</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/nifty.min.css" rel="stylesheet">
+<link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+<link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+<!--保留-->
+<link href="premium/icon-sets/icons/solid-icons/premium-solid-icons.min.css" rel="stylesheet">
+<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+
+<link href="css/slidebars.css" rel="stylesheet">
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/nifty.min.js"></script>
+<script src="js/demo/nifty-demo.min.js"></script>
+<script src="plugins/fooTable/dist/footable.all.min.js"></script>
+<script src="js/demo/tables-footable.js"></script>
+<script src="js/demo/tables-datatables.js"></script>
+
+<style type="text/css">  
+	.menu-title{
+		font-size: 15px;
+		color: white;
+	}
+	#table_list{
+	box-shadow: 0 5px 12px 2px rgba(0, 0, 0, 0.25);
+	border-radius:7px;
+	}
+	
+	.detailTabBtn{
+		margin: 8px 2px;
+		padding: 7px 12px;
+		border-radius: 20px;
+	}
+	#detailTabBtn{
+		position: relative;
+		right: 50%;
+	}
+	th{
+		text-align: center;
+	}
+	.detailTabUtil{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	#detailTabCon{
+		display:none;/*此处不能省略   否则详情页面会出现部分按钮点击不了*/
+		width:80%;
+		position: absolute;
+		right: 1%;
+		z-index: 100;
+	}
+	.team_inf{
+		width: 70%;
+		position: absolute;
+		right: -1%;
+	}
+	h3{
+		margin: 10px auto;
+		font-family: "微软雅黑";
+		font-weight: bold;
+		font-size: 20px;
+	}
+	.table-bordered th{
+		border-color: black;
+	}
+	.pull-right .dropdown-menu{
+		left: 0;
+	}
+	a{
+		cursor: pointer;
+	}
+	
+</style>
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+	<div id="container" class="effect aside-float aside-bright mainnav-lg">
+
+		<!--NAVBAR-->
+		<!--===================================================-->
+		<header id="navbar">
+			<div id="navbar-container" class="boxed">
+
+				<!--Brand logo & name-->
+				<!--================================-->
+				<div class="navbar-header">
+					<a href="welcome.html" class="navbar-brand"> <img
+						src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+						<div class="brand-title">
+							<span class="brand-text">中意资产 </span>
+						</div>
+					</a>
+				</div>
+
+				<div class="navbar-content clearfix">
+					<ul class="nav navbar-top-links pull-left">
+
+						<li class="tgl-menu-btn"><a class="mainnav-toggle" href="#">
+								<i class="demo-pli-view-list"></i>
+						</a></li>
+
+					</ul>
+					<ul class="nav navbar-top-links pull-right">
+             <!--User dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                <span class="pull-right">
+                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
+                                    <i class="demo-pli-male ic-user"></i>
+                                </span>
+                                <div class="username hidden-xs">赵鹏</div>
+                            </a>
+
+
+                            <div class="dropdown-menu  dropdown-menu-left panel-default">
+                                <!-- Dropdown footer -->
+                                <div class="pad-all text-left">
+                                    <a href="pages-login.html" class="btn btn-primary">
+                                        <i class="demo-pli-unlock"></i> Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End user dropdown-->
+
+                        <li>
+                            <a href="#" class="aside-toggle navbar-aside-icon">
+                                <i class="pci-ver-dots"></i>
+                            </a>
+                        </li>
+                    </ul>
+					
+				</div>
+
+			</div>
+		</header>
+		<!--===================================================------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+		<!--END NAVBAR-->
+
+		<div class="boxed" id="change">
+
+			<!--CONTENT CONTAINER-->
+			<!--===================================================-->
+			<div id="content-container">
+				<div id="page-title">
+					<div class="col-lg-2"  style="display: block;" id = "title">
+						<!-- <button class="btn btn-default" href="#" data-toggle="modal" data-target="#modalAdd">
+							<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;新增投行类产品
+						</button> -->
+						<a id="addbtn" class="btn btn-warning" onclick="add()"
+						> <i class="demo-pli-plus"></i>
+							新增投行类产品
+						</a>
+						<!-- <a href="add.html" class="btn btn-default">
+                            <i class="glyphicon glyphicon-ok"></i> 新增投行类产品
+                        </a> -->
+					</div>
+				</div>
+
+				<div id="page-content">
+
+
+
+		<!-- <div class="panel">
+			<div class="panel-heading">
+				<h3 class="panel-title">投行类产品查询列表</h3>
+			</div>
+			<div class="panel-body">
+					<table class="table table-condensed table-responsive" id="tableBS" data-toggle="table">
+						
+						<thead>
+							<tr>
+								<th  data-field="wjMc"  data-sortable="true" data-align="left"  data-halign="center">名称</th>
+								<th  data-field="wjDx"  data-sortable="true" data-align="right" data-halign="center">文件大小</th>
+								<th  data-field="wjBbh"  data-sortable="true" data-align="right" data-halign="center">版本</th>
+								<th  data-field="wjScrMc"  data-sortable="true" data-align="center" data-halign="center">创建者</th>
+								<th  data-field="wjCjsj"  data-sortable="true" data-align="right" data-halign="center">创建日期</th>
+								<th  data-field="describe"  data-align="left" data-halign="center">描述</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			<div id="toolbar"></div>
+		</div>
+
+
+	<script>
+	var mydata = [ {
+		"data-checkbox" : "true",
+		"wjMc" : "YY文件夹",
+		"wjDx" : "86K",
+		"wjBbh" : "3.0.1",
+		"wjScrMc" : "刘畅",
+		"wjCjsj" : "2015-12-24",
+		"describe" : "好的好的多打电话打开了的话大家看到建行的卡"
+
+	}];
+	$('#tableBS').bootstrapTable({
+		pagination : true,
+    	data : mydata,
+    	dataType : 'json',
+    	search : true,
+    	striped : true,
+    	clickToSelect : true,
+    	sortOrder : 'asc',
+    	toolbar : '#toolbar',
+    	showExport : true,
+    	exportDataType: 'all' // all,basic,selected
+	});
+	</script>
+ -->
+
+
+
+					<div class="panel" style="display: block;" id="table_list">
+						<div class="panel-heading">
+							<h3 class="panel-title">投行类产品查询列表</h3>
+						</div>
+						<div class="panel-body">
+							<table id="demo-dt-basic"
+								class="table table-striped table-bordered" cellspacing="0"
+								width="100%">
+								<thead>
+									<tr>
+										<th style="width: 10%">项目代码</th>
+										<th class="min-tablet" style="width: 16%">项目名称</th>
+										<th class="min-tablet" style="width: 10%">项目状态</th>
+										<th class="min-desktop" style="width: 10%">项目种类</th>
+										<th class="min-desktop" style="width: 10%">项目经理</th>
+										<th style="width: 10%">开始时间</th>
+										<th style="width: 10%">结束时间</th>
+										<th style="width: 15%">业务线分管领导</th>
+										<!--<th id="work_1" style="width: 8%"><span>操作</span></th>-->
+									</tr>
+								</thead>
+								<tbody id='bodyCon'>
+									<tr class="addRow">
+										<td>THCP20160165</td>
+										<td><a class="btn-link" style="display: block;" onclick="detail();">
+                            中意资产-融汇集合资产管理产品（一期）
+                        </a></td>
+										<td>执行中</td>
+										<td>不动产投资计划</td>
+										<td>信息科技中心-赵鹏-中科金财</td>
+										<td>2016-11-3</td>
+										<td>2017-6-4</td>
+										<td>张光</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160165</td>
+										<td><a class="btn-link" href="#" style="display: block;" onclick="detail();">
+                          中意资产-融汇集合资产管理产品（二期）
+                        </a></td>
+										<td>储备</td>
+										<td>不动产投资计划</td>
+										<td>信息科技中心-赵鹏-中科金财</td>
+										<td>2016-12-7</td>
+										<td>2017-7-9</td>
+										<td>张光</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160166</td>
+										<td><a class="btn-link" style="display: block;" onclick="detail();">
+                          中意资产管理有限责任公司-稳健创利3号
+                        </a></td>
+										<td>储备</td>
+										<td>不动产投资计划</td>
+										<td>信息科技中心-赵鹏-中科金财</td>
+										<td>2016-7-3</td>
+										<td>2017-5-4</td>
+										<td>甄庆哲</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160167</td>
+										<td><a class="btn-link" style="display: block;" onclick="detail();">
+                        金葵花稳健增盈1号（招行北分）
+                        </a></td>
+										<td>执行中</td>
+										<td>资产支持计划</td>
+										<td>信息科技中心-李雪青-中科金财</td>
+										<td>2016-1-3</td>
+										<td>2017-7-4</td>
+										<td>甄庆哲</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160168</td>
+										<td><a class="btn-link" style="display: block;" onclick="detail();">
+                         中意-太原煤气化项目债权投资计划
+                        </a></td>
+										<td>储备</td>
+										<td>资产支持计划</td>
+										<td>信息科技中心-付江涛-中科金财</td>
+										<td>2016-8-3</td>
+										<td>2017-5-14</td>
+										<td>张光</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button>&nbsp;&nbsp;</a><a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160169</td>
+										<td><a  class="btn-link" style="display: block;" onclick="detail();">
+                          中意-浙江新昌钦寸水库项目债权投资计划
+                        </a></td>
+										<td>正常结束</td>
+										<td>资产支持计划</td>
+										<td>信息科技中心-江海-中科金财</td>
+										<td>2016-11-3</td>
+										<td>2017-5-24</td>
+										<td>甄庆哲</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160179</td>
+										<td><a  class="btn-link" style="display: block;" onclick="detail();">
+                         中意-贵阳观山湖建设投资发展有限公司债权投资计划
+                        </a></td>
+										<td>正常结束</td>
+										<td>不动产投资计划</td>
+										<td>信息科技中心-江海-中科金财</td>
+										<td>2016-11-13</td>
+										<td>2017-5-14</td>
+										<td>张光</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160180</td>
+										<td><a  class="btn-link" style="display: block;" onclick="detail();">
+                          中意-南昌水投债权投资计划
+                        </a></td>
+										<td>正常结束</td>
+										<td>不动产投资计划</td>
+										<td>信息科技中心-江海-中科金财</td>
+										<td>2016-10-3</td>
+										<td>2017-9-4</td>
+										<td>张光</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160197</td>
+										<td><a  class="btn-link" style="display: block;" onclick="detail();">
+                          中意-金晟丰基金投资集合资金信托计划
+                        </a></td>
+										<td>执行中</td>
+										<td>债权投资计划</td>
+										<td>信息科技中心-江海-中科金财</td>
+										<td>2016-12-9</td>
+										<td>2017-9-6</td>
+										<td>甄庆哲</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160198</td>
+										<td><a  class="btn-link" style="display: block;" onclick="detail();">
+                         永安铅华新开款地标投资项目
+                        </a></td>
+										<td>执行中</td>
+										<td>债权投资计划</td>
+										<td>信息科技中心-赵鹏-中科金财</td>
+										<td>2016-12-3</td>
+										<td>2017-8-4</td>
+										<td>张光</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+									<tr>
+										<td>THCP20160199</td>
+										<td><a  class="btn-link" href="#" style="display: block;" onclick="detail();">
+                          中意资产-强势轮动资产管理产品
+                        </a></td>
+										<td>储备</td>
+										<td>债权投资计划</td>
+										<td>信息科技中心-江海-中科金财</td>
+										<td>2016-11-3</td>
+										<td>2017-11-4</td>
+										<td>张光</td>
+										<!--<td><a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a></td>-->
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+<!-------------------------------------查看项目详情-->
+<!------------------------------------------------->
+						<div class="panel" id="list_view" style="display: none;">
+					    	
+					    <div class="panel-heading">
+					    	<!--折叠样式-->
+					    	<!--人员详情和项目详情-->
+					    	<!--按钮tab样式-->
+						        <span class="tab-base pull-right">
+						            <ul id="detailTabBtn" class="nav nav-tabs tabs-right">
+	<!--<li class="active">-->
+		<button data-toggle="tab" class="btn btn-warning detailTabBtn detailTabBtnPro" href="#demo-rgt-tab-1" aria-expanded="false">项目信息</button>
+			
+		<!--</li>-->
+	<!--<li>-->
+		<button class="btn btn-warning detailTabBtn detailTabBtnPer" data-toggle="tab" href="#demo-rgt-tab-2" aria-expanded="false">成员信息</button>
+			
+		<!--</li>-->
+</ul>
+						            <div id="detailTabCon">
+	<div id="demo-rgt-tab-2" class="tab-pane fade detailTabUtil team_inf">
+		
+		<div class="col-sm-12">
+			<div class="panel" style="border:1px solid orangered;border-radius: 7px;">
+				<div class="panel-heading">
+					                <h3 class="panel-title">项目组成员</h3>
+					            </div>
+
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th class="col-lg-3">部门</th>
+									<th class="col-lg-9">详情</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="text-center">项目经理部门主管:</td>
+									<td>信息科技中心-刘水寒</td>
+								</tr>
+								<tr>
+									<td class="text-center">业务线分管领导:</td>
+									<td>管理层-甄庆哲</td>
+									<!--<td><span class="label label-info">Personal</span></td>-->
+								</tr>
+								<tr>
+									<td class="text-center">市场部员工:</td>
+									<td>/</td>
+								</tr>
+								<tr>
+									<td class="text-center">风控合规部员工:</td>
+									<td>风控合规部-迟海霞</td>
+									<!--<td>风控合规部-陈元明</td>-->
+								</tr>
+								<tr>
+									<td class="text-center">运营部员工:</td>
+									<td>运营管理中心-王永伟</td>
+								</tr>
+								<tr>
+									<td class="text-center">其他员工:</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!--===================================================-->
+				<!--End Bordered Table-->
+
+			</div>
+		</div>
+	</div>
+	<div id="demo-rgt-tab-1" class="tab-pane fade detailTabUtil">
+		<div class="row">
+			<div class="col-sm-12">
+					        <div class="panel" style="border:1px solid orangered;border-radius: 7px;">
+					            <div class="panel-heading">
+					                <h3 class="panel-title">项目基本信息</h3>
+					            </div>
+					
+					            <div class="panel-body">
+					                <div class="table-responsive">
+					                    <table class="table table-bordered">
+					                        <!--<thead >
+					                            <tr>
+					                                <th class="col-lg-2">#</th>
+					                                <th class="col-lg-2">User</th>
+					                                <th class="col-lg-2">Plan</th>
+					                                <th class="col-lg-2">#</th>
+					                                <th class="col-lg-2">User</th>
+					                                <th class="col-lg-2">Plan</th>
+					                            </tr>
+					                        </thead>-->
+					                        <tbody>
+					                            <!--<tr>
+					                                <td class="col-lg-2 text-right">产品名称:</td>
+					                                <td class="col-lg-2"></td>
+				                               <td class="col-lg-2 text-right">项目种类/管理方式:</td>
+					                                <td class="col-lg-2"></td>
+					                                <td class="col-lg-2 text-right">产品代码:</td>
+					                                <td class="col-lg-2"></td>
+					                            </tr>
+					                            <tr>
+					                                <td class="col-lg-2 text-right">产品名称:</td>
+					                                <td class="col-lg-2"></td>
+				                               <td class="col-lg-2 text-right">项目种类/管理方式:</td>
+					                                <td class="col-lg-2"></td>
+					                                <td class="col-lg-2 text-right">产品代码:</td>
+					                                <td class="col-lg-2"></td>
+					                            </tr>
+					                            <tr>
+					                                <td class="col-lg-2 text-right">产品名称:</td>
+					                                <td class="col-lg-2"></td>
+				                               <td class="col-lg-2 text-right">项目种类/管理方式:</td>
+					                                <td class="col-lg-2"></td>
+					                                <td class="col-lg-2 text-right">产品代码:</td>
+					                                <td class="col-lg-2"></td>
+					                            </tr>-->
+					                            <!--<tr>
+					                                <td class="col-lg-2 text-right">产品名称:</td>
+					                                <td class="col-lg-2"></td>
+				                               <td class="col-lg-2 text-right">项目种类/管理方式:</td>
+					                                <td class="col-lg-2"></td>
+					                                <td class="col-lg-2 text-right">产品代码:</td>
+					                                <td class="col-lg-2"></td>
+					                            </tr>
+					                            <tr>
+					                                <td class="col-lg-2 text-right">产品名称:</td>
+					                                <td class="col-lg-2"></td>
+				                               <td class="col-lg-2 text-right">项目种类/管理方式:</td>
+					                                <td class="col-lg-2"></td>
+					                                <td class="col-lg-2 text-right">产品代码:</td>
+					                                <td class="col-lg-2"></td>
+					                            </tr>
+					                            <tr>
+					                                <td class="col-lg-2 text-right">产品名称:</td>
+					                                <td class="col-lg-2"></td>
+				                               <td class="col-lg-2 text-right">项目种类/管理方式:</td>
+					                                <td class="col-lg-2"></td>
+					                                <td class="col-lg-2 text-right">产品代码:</td>
+					                                <td class="col-lg-2"></td>
+					                            </tr>
+					                            <tr>
+					                                <td class="col-lg-2 text-right">产品名称:</td>
+					                                <td class="col-lg-2"></td>
+				                               <td class="col-lg-2 text-right">项目种类/管理方式:</td>
+					                                <td class="col-lg-2"></td>
+					                                <td class="col-lg-2 text-right">产品代码:</td>
+					                                <td class="col-lg-2"></td>
+					                            </tr>-->
+																	                            <tr>
+													<td class="col-lg-2 text-right">产品名称:</td>
+													<td class="col-lg-2">	
+融汇集合(一期)
+</td>
+													<td class="col-lg-2 text-right">项目种类:</td>
+													<td class="col-lg-2">不动产投资计划</td>
+													<td class="col-lg-2 text-right">产品代码:</td>
+													<td class="col-lg-2">THCP20160165</td>
+												</tr>
+												<tr>
+													<td class="col-lg-2 text-right">项目经理:</td>
+													<td class="col-lg-2">信息科技中心-赵鹏</td>
+													<td class="col-lg-2 text-right">项目开始时间:</td>
+													<td class="col-lg-2">2016-11-15</td>
+													<td class="col-lg-2 text-right">项目结束时间:</td>
+													<td class="col-lg-2">2018-11-15</td>
+												</tr>
+												<tr>
+													<td class="col-lg-2 text-right">投资经理:</td>
+													<td class="col-lg-2"></td>
+													<td class="col-lg-2 text-right">产品线分类:</td>
+													<td class="col-lg-2"></td>
+													<td class="col-lg-2 text-right">是否结构化:</td>
+													<td class="col-lg-2"></td>
+												</tr>
+												<tr>
+													<td class="col-lg-2 text-right">产品到期日:</td>
+													<td class="col-lg-2"></td>
+													<td class="col-lg-2 text-right">开放周期:</td>
+													<td class="col-lg-2"></td>
+													<td class="col-lg-2 text-right">份额精度:</td>
+													<td class="col-lg-2"></td>
+												</tr>
+												<tr>
+													<td class="col-lg-2 text-right">单位净值精度:</td>
+													<td class="col-lg-2"></td>
+													<td class="col-lg-2 text-right">认购利息处理方式:</td>
+													<td class="col-lg-2"></td>
+													<td class="col-lg-2 text-right">认/申购费率:</td>
+													<td class="col-lg-2"></td>
+												</tr>
+					                        </tbody>
+					                    </table>
+					                </div>
+					            </div>
+					            <!--===================================================-->
+					            <!--End Bordered Table-->
+					
+					        </div>
+					    </div>
+		</div>
+	</div>
+
+</div>
+						        </span>
+					    	
+					        <h3 class="panel-title">查看项目详情</h3>
+					    </div>
+					    <div class="panel-body">
+					        <div class="col-lg-12">
+					        <h4>项目全景图</h4>
+					
+					        <!-- Timeline -->
+					        <!--===================================================-->
+					        <div class="timeline">
+					 
+					 
+					 
+					 <div class="timeline-entry">
+					                <div class="timeline-stat">
+					                    <div id="state1Icon"  class="timeline-icon bg-danger"></div>
+					                    <div class="timeline-time" style="color: rgb(239,83,80);">项目储备</div>
+					                </div>
+					                <div class="timeline-label">
+					                	<!--发起预审审批按钮及模态-->
+					                	<button id="startPretrial1" title="发起预审审批" data-target="#demo-default-modal" data-toggle="modal" class="btn btn-danger btn-icon btn-circle"><i class="demo-psi-pen-5 icon-md"></i></button>&nbsp;&nbsp;<span style="font-weight: bolder;">预审审批</span>
+					                	<br /><br />
+					                	<div class="modal fade in" id="demo-default-modal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="false">
+        <div class="modal-dialog  modal-sm">
+            <div class="modal-content">
+
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                    
+                </div>
+
+                <!--Modal body-->
+                <!--<div class="modal-body">-->
+                		
+                    	<h3 style="color: rgb(156,41,41);text-align: center;"><img src="img/3.png" alt="" />&nbsp;&nbsp;&nbsp;预审审批完成</h3>
+                <!--</div>-->
+
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <!--<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>-->
+                    <button id="approval1" data-dismiss="modal" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+					                    <div class="row">
+					                    	<div class="col-sm-12">
+					        <div class="panel">
+					            <!-- Striped Table -->
+					            <!--===================================================-->
+					            <div class="panel-body">
+					                <div class="table-responsive">
+					                    <table class="table table-striped">
+					                        <thead>
+					                            <tr>
+					                                <th>里程碑/任务名称</th>
+					                                <th>状态</th>
+					                                <th>负责人</th>
+					                                <th>计划完成</th>
+					                                <th>实际完成</th>
+					                                <th>操作</th>
+					                            </tr>
+					                        </thead>
+					                        <tbody>
+					                            <tr>
+					                                <td><a href="#" class="btn-link">编写《主动管理产品可行性研究报告》</a></td>
+					                                <td>待执行</td>
+					                                <td></td>
+					                                <td></td>
+					                                <td></td>
+					                                <td ><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+					                            </tr>
+					                        </tbody>
+					                    </table>
+					                </div>
+					            </div>
+					            <!--===================================================-->
+					            <!-- End Striped Table -->
+					
+					        </div>
+					    </div>
+					                    </div>
+					                    
+					                    
+					                </div>
+					            </div>
+					            
+					            <div class="timeline-entry">
+	<div class="timeline-stat">
+		<div id="state2Icon"  class="timeline-icon"></div>
+		<div class="timeline-time">项目立项</div>
+	</div>
+	<div id="state2" class="timeline-label" style="display: none;">
+		<button data-target="#demo-default-modal2" data-toggle="modal" class="btn btn-danger btn-icon btn-circle"><i class="demo-psi-pen-5 icon-md"></i></button>&nbsp;&nbsp;
+		<button data-target="#demo-default-modal8" data-toggle="modal" class="btn btn-success btn-icon btn-circle"><i class="fa fa-arrow-down icon-md"></i></button>
+		<br /><br />
+		
+		
+		
+		<div class="modal fade in" id="demo-default-modal2" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="false">
+        <div class="modal-dialog  modal-mg">
+            <div class="modal-content">
+
+                <!--Modal header-->
+                <div class="modal-header">
+                <h4>项目立项审批路径</h4>
+                    <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                    
+                </div>
+
+                <div class="panel">
+							<div class="panel-body">
+							<div title="" class="mainP_centerDiv panel-body panel-body-noheader layout-body" data-options="region:'center',split:false,collapsible:true,border:true">
+		<form class="queryCD_form" id="ff" enctype="multipart/form-data" method="post">
+			<table class="queryCD_table">
+				<tbody>
+				<tr class="queryCD_tr">
+					<td  style="vertical-align: top;">
+						<!-- 审批路径表格 -->
+						<table class="queryCD_table" id="splj_table">
+						<tbody>
+						<tr class="queryCD_tr">
+							<td class="queryCD_td_name" >第1步_审核</td>
+							<td class="queryCD_td_value" >
+							<div class="col-lg-6">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+											</div>
+											<div class="col-lg-6">
+												<select class="form-control input-sm" id="ryxz">
+													<option value="United States">刘水寒</option>
+												</select>
+											</div>	
+						</td>
+						</tr>
+						<tr style="height: 10px;"></tr>
+						<tr class="queryCD_tr">
+						<td class="queryCD_td_name" >第2步_签批</td>
+						<td class="queryCD_td_value" >
+						<div class="col-lg-3">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">风控部</option>
+												</select>
+											</div>
+											<div class="col-lg-3">
+												<select class="form-control input-sm" id="ryxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+											<div class="col-lg-3">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">运营管理中心</option>
+												</select>
+											</div>
+												
+												<div class="col-lg-3">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United Kingdom">--</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+											<hr>
+											<div class="col-lg-4">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">风控部</option>
+												</select>
+											</div>
+												
+												<div class="col-lg-4">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United Kingdom">--</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+											</td>
+											</tr>
+											<tr style="height: 10px;"></tr>
+											
+										<tr class="queryCD_tr">
+											<td class="queryCD_td_name" >第3步_会签</td>
+											<td class="queryCD_td_value" >
+											<div class="col-lg-6">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">组合管理部</option>
+												</select>
+											</div>
+											<div class="col-lg-6">
+												<select class="form-control input-sm" id="ryxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>	
+											</td>
+											</tr>
+											<tr style="height: 10px;"></tr>
+											<tr class="queryCD_tr">
+											<td class="queryCD_td_name" >第4步_会签</td>
+											<td class="queryCD_td_value" >
+											<div class="col-lg-6">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">管理层</option>
+												</select>
+											</div>
+											<div class="col-lg-6">
+												<select class="form-control input-sm" id="ryxz">
+													<option value="United States">--</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>	
+											</td>
+											</tr>
+											</tbody>
+											</table>
+											
+					</td>
+				</tr>
+			</tbody>
+			</table>
+		</form>
+	</div>
+
+										</div>
+										</div>
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <!--<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>-->
+                    <button id="approval2" data-dismiss="modal" class="btn btn-primary">申请</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="modal fade in" id="demo-default-modal8" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="false">
+        <div class="modal-dialog  modal-md">
+            <div class="modal-content">
+
+                 <div class="panel-heading">
+					      <h3 class="panel-title">立项模板</h3>
+				</div>
+                <div class="col-md-12">
+					        <div class="panel">
+					            <div class="panel-body">
+					                <table class="demo-add-niftycheck" id="table8" data-toggle="table">
+						<thead>
+							<tr>
+								<th data-checkbox="true" data-valign="middle"></th>
+								<th data-field="state"></th>
+							</tr>
+						</thead>
+					</table>
+					            </div>
+					        </div>
+					    </div>
+                
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                    <button id="approval2" data-dismiss="modal" class="btn btn-primary">下载</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+	var mydata = [ {
+		"data-checkbox" : "true",
+		"state" : "附件1：OA使用说明书.docx 查看",
+// 		"Name" : "86K",
+// 		"Gender" : "3.0.1",
+// 		"Birthday" : "刘畅",
+// 		"Sex" : "2015-12-24",
+// 		"Email" : "好的好的多打电话打开了的话大家看到建行的卡"
+
+	}, {
+		"data-checkbox" : "true",
+		"state" : "中意资产管理有限责任公司公文管理暂行规定.doc 查看"
+	}, {
+		"data-checkbox" : "true",
+		"state" : "附件3：公文常用格式规范细则.docx 查看"
+	}, {
+		"data-checkbox" : "true",
+		"state" : "中意资产管理有限责任公司受托业务资金管理办法.pdf 查看"
+	}];
+	$('#table8').bootstrapTable({
+//		pagination : true,
+    	data : mydata,
+    	dataType : 'json',
+//  	search : true,
+//  	striped : true,
+    	clickToSelect : true,
+//  	sortOrder : 'asc',
+//     	toolbar : '#toolbar',
+//  	showExport : true,
+    	exportDataType: 'all' // all,basic,selected
+	});
+	</script>
+    
+    
+    
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel">
+
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>里程碑/任务名称</th>
+										<th>状态</th>
+										<th>负责人</th>
+										<th>计划完成</th>
+										<th>实际完成</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><a href="#" class="btn-link">编写《主动管理产品可行性研究报告》</a></td>
+										<td>待执行</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+									</tr>
+									<tr>
+										<td><a href="#" class="btn-link">编写《产品合同》</a></td>
+										<td>待执行</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a  class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+									</tr>
+									<tr>
+										<td><a href="#" class="btn-link">编写《各部门会议记录》</a></td>
+										<td>待执行</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+									</tr>
+									<tr>
+										<td><a href="#" class="btn-link">编写《产品托管方案》</a></td>
+										<td>待执行</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+									</tr>
+									<tr>
+										<td><a href="#" class="btn-link">上传其他附件</a></td>
+										<td>待执行</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+					            
+					            
+					            
+					            
+					            <div class="timeline-entry">
+										<div class="timeline-stat">
+											<div id="state3Icon" class="timeline-icon"></div>
+											<div class="timeline-time">委员会审批</div>
+										</div>
+										<div class="timeline-label" id="state3" style="display: none;">
+											<!--发起预审审批按钮及模态-->
+											<button data-target="#demo-default-modal3" data-toggle="modal" class="btn btn-danger btn-icon btn-circle">
+												<i class="demo-psi-pen-5 icon-md"></i>
+											</button>&nbsp;&nbsp;<span style="font-weight: bolder;">委员会审批</span>
+											<br />
+											<br />
+											<div class="modal fade in" id="demo-default-modal3" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="false">
+												<div class="modal-dialog  modal-md">
+													<div class="modal-content">
+
+														<!--Modal header-->
+														<div class="modal-header">
+															<h4>委员会审批路径</h4>
+															<button type="button" class="close" data-dismiss="modal">
+																<i class="pci-cross pci-circle"></i>
+															</button>
+
+														</div>
+
+														<div class="panel">
+															<div class="panel-body">
+																<div title="" class="mainP_centerDiv panel-body panel-body-noheader layout-body">
+																	<form class="queryCD_form" id="ff" enctype="multipart/form-data" method="post">
+																		<table class="queryCD_table">
+																			<tbody>
+																				<tr class="queryCD_tr" style="padding: 0px; margin: 0px;">
+																					<td style="vertical-align: top;">
+																						<!-- 审批路径表格 -->
+																						<table class="queryCD_table" id="splj_table">
+																							<tbody>
+																								<tr class="queryCD_tr">
+																									<td class="queryCD_td_name" >第1步_委员会签批</td>
+																									<td class="queryCD_td_value">
+																										<div class="col-lg-6" style="top: 66px;">
+																											<select class="form-control input-sm" id="bmxz" >
+																												<option value="United Kingdom">投资管理委员会</option>
+																											</select>
+																										</div>
+																										
+																										<div class="col-lg-6">
+																											<select class="form-control input-sm" id="ryxz" style="width: 130px; height: 170px;"  multiple="value">
+																												<option value="United States">刘畅</option>
+																												<option value="United Kingdom">张阳</option>
+																												<option value="United States">迟伟琛</option>
+																												<option value="United Kingdom">赵鹏</option>
+																												<option value="United States">姜海</option>
+																												<option value="United Kingdom">李雪青</option>
+																												<option value="United States">李阳</option>
+																												<option value="United Kingdom">符江涛</option>
+																											</select>
+																										</div>
+
+																									</td>
+																								</tr>
+																							</tbody>
+																						</table>
+
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</form>
+																</div>
+
+															</div>
+														</div>
+														<!--Modal footer-->
+														<div class="modal-footer">
+															<!--<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>-->
+															<button id="approval3" data-dismiss="modal" class="btn btn-primary">申请</button>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="panel">
+														<!-- Striped Table -->
+														<!--===================================================-->
+														<div class="panel-body">
+															<div class="table-responsive">
+																<table class="table table-striped">
+																	<thead>
+																		<tr>
+																			<th>里程碑/任务名称</th>
+																			<th>状态</th>
+																			<th>负责人</th>
+																			<th>计划完成</th>
+																			<th>实际完成</th>
+																			<th>操作</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td><a href="#" class="btn-link">编写《委员会决议草案》</a></td>
+																			<td>待执行</td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+														<!--===================================================-->
+														<!-- End Striped Table -->
+
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+
+									</div>
+									
+									
+									
+									<div class="timeline-entry">
+					                <div class="timeline-stat">
+					                    <div id="state4Icon" class="timeline-icon"></div>
+					                    <div class="timeline-time">产品发行准备</div>
+					                </div>
+					                <div class="timeline-label"  id="state4" style="display: none;">
+					                	<!--发起预审审批按钮及模态-->
+					                	<button id="startPretrial" data-target="#demo-default-modal4" data-toggle="modal" class="btn btn-danger btn-icon btn-circle"><i class="demo-psi-pen-5 icon-md"></i></button>&nbsp;&nbsp;<span style="font-weight: bolder;">产品发行审批</span>
+					                	<br /><br />
+					                	<div class="modal fade in" id="demo-default-modal4" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="false">
+        <div class="modal-dialog  modal-sm">
+            <div class="modal-content">
+
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                    
+                </div>
+
+                <!--Modal body-->
+                <!--<div class="modal-body">-->
+                    	<h3 style="color: rgb(156,41,41);text-align: center;"><img src="img/3.png" alt="" />&nbsp;&nbsp;&nbsp;产品发行审批完成</h3>
+                <!--</div>-->
+
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <!--<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>-->
+                    <button id="approval4" data-dismiss="modal" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    			
+    
+    
+					                    <div class="row">
+					                    	<div class="col-sm-12">
+					        <div class="panel">
+					            <!-- Striped Table -->
+					            <!--===================================================-->
+					            <div class="panel-body">
+					                <div class="table-responsive">
+					                    <table class="table table-striped">
+					                        <thead>
+					                            <tr>
+					                                <th>里程碑/任务名称</th>
+					                                <th>状态</th>
+					                                <th>负责人</th>
+					                                <th>计划完成</th>
+					                                <th>实际完成</th>
+					                                <th>操作</th>
+					                            </tr>
+					                        </thead>
+					                        <tbody>
+					                            <tr>
+					                                <td><a href="#" class="btn-link">签订《产品合同及募集说明书》</a></td>
+					                                <td>待执行</td>
+					                                <td></td>
+					                                <td></td>
+					                                <td></td>
+					                                <td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+					                            </tr>
+					                            <tr>
+					                                <td><a href="#" class="btn-link">签订《产品托管方案》</a></td>
+					                                <td>待执行</td>
+					                                <td></td>
+					                                <td></td>
+					                                <td></td>
+					                                <td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+					                            </tr>
+					                        </tbody>
+					                    </table>
+					                </div>
+					            </div>
+					            <!--===================================================-->
+					            <!-- End Striped Table -->
+					
+					        </div>
+					    </div>
+					                    </div>
+					                    
+					                    
+					                </div>
+					                
+					            </div>
+					            
+
+							<div class="timeline-entry">
+					                <div class="timeline-stat">
+					                    <div id="state5Icon" class="timeline-icon"></div>
+					                    <div class="timeline-time">产品运营中</div>
+					                </div>
+					                <div class="timeline-label"  id="state5" style="display: none;">
+					                	<!--发起预审审批按钮及模态-->
+					                	<button id="startPretrial" data-target="#demo-default-modal5" data-toggle="modal" class="btn btn-danger btn-icon btn-circle"><i class="demo-psi-pen-5 icon-md"></i></button>&nbsp;&nbsp;<span style="font-weight: bolder;">产品清算审批</span>
+					                	<br /><br />
+					                	<div class="modal fade in" id="demo-default-modal5" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="false">
+        <div class="modal-dialog  modal-sm">
+            <div class="modal-content">
+
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button  type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                    
+                </div>
+
+                <!--Modal body-->
+                <!--<div class="modal-body">-->
+                    	<h3 style="color: rgb(156,41,41);text-align: center;"><img src="img/3.png" alt="" />&nbsp;&nbsp;&nbsp;清算审批完成</h3>
+                <!--</div>-->
+
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <!--<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>-->
+                    <button  id="approval5"  data-dismiss="modal" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    			
+    
+    
+					                    <div class="row">
+					                    	<div class="col-sm-12">
+					        <div class="panel">
+					            <!-- Striped Table -->
+					            <!--===================================================-->
+					            <div class="panel-body">
+					                <div class="table-responsive">
+					                    <table class="table table-striped">
+					                        <thead>
+					                            <tr>
+					                                <th>里程碑/任务名称</th>
+					                                <th>状态</th>
+					                                <th>负责人</th>
+					                                <th>计划完成</th>
+					                                <th>实际完成</th>
+					                                <th>操作</th>
+					                            </tr>
+					                        </thead>
+					                        <tbody>
+					                            <tr>
+					                                <td><a href="#" class="btn-link">产品保监会报备</a></td>
+					                                <td>待执行</td>
+					                                <td></td>
+					                                <td></td>
+					                                <td></td>
+					                                <td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+					                            </tr>
+					                            <tr>
+					                                <td><a href="#" class="btn-link">运营及清算</a></td>
+					                               <td>待执行</td>
+					                                <td></td>
+					                                <td></td>
+					                                <td></td>
+					                                <td><a class="btn-link alter">修改</a>&nbsp;&nbsp;&nbsp;<a class="btn-link">子任务</a></td>
+					                            </tr>
+					                        </tbody>
+					                    </table>
+					                </div>
+					            </div>
+					            <!--===================================================-->
+					            <!-- End Striped Table -->
+					
+					        </div>
+					    </div>
+					                    </div>
+					                    
+					                    
+					                </div>
+					                
+					            </div>
+
+
+
+
+					            
+					        </div>
+					        <!--===================================================-->
+					        <!-- End Timeline -->
+					
+					    </div>
+					    </div>
+					    <div class="panel-footer text-right">
+
+								<a id="closeXmxq" class="btn btn-default" type="button">关闭</a> 
+
+							</div>
+					</div>
+					
+					
+					
+					<!--end--------------->
+
+
+
+					<div id="add" style="display: none;">
+						<div class="panel">
+							<div class="panel-heading">
+								<h3 class="panel-title">新增投行类产品</h3>
+								
+								
+							</div>
+							<div class="panel-body">
+
+								<form class="form-horizontal" id="ffAdd" novalidate name="ffAdd">
+									<fieldset>
+										<div class="form-group">
+											<label for="wjMcWj" class="col-lg-2 control-label">产品名称：</label>
+											<div class="col-lg-4">
+												<input class="form-control input-sm" id="wjMcWj"
+													name="wjMcWj" type="text" autocomplete="off" maxlength="20"
+													required>
+											</div>
+											<label for="xmzl" class="col-lg-2 control-label">项目种类：</label>
+											<div class="col-lg-4">
+												<select class="form-control input-sm" id="xmzl" name="xmzl">
+													<option value="United States">--</option>
+													<option value="United States">不动产投资计划</option>
+													<option value="United Kingdom">资产支持计划</option>
+													<option value="United Kingdom">债权投资计划</option>
+												</select>
+
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">项目经理：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">管理层</option>
+													<option value="United Kingdom">综合部</option>
+													<option value="United States">组合管理</option>
+													<option value="United Kingdom">交易中心</option>
+													<option value="United States">金融市场部</option>
+													<option value="United Kingdom">信用评估部</option>
+													<option value="United States">跨境业务部</option>
+													<option value="United Kingdom">股权投资部</option>
+													<option value="United States">人力资源部</option>
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+												<div style="height: 1px;"></div>
+												<select class="form-control input-sm" id="ryxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">投资经理：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">管理层</option>
+													<option value="United Kingdom">综合部</option>
+													<option value="United States">组合管理</option>
+													<option value="United Kingdom">交易中心</option>
+													<option value="United States">金融市场部</option>
+													<option value="United Kingdom">信用评估部</option>
+													<option value="United States">跨境业务部</option>
+													<option value="United Kingdom">股权投资部</option>
+													<option value="United States">人力资源部</option>
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+												<div style="height: 1px;"></div>
+												<select class="form-control input-sm" id="ryxz">
+													<option value="United States">--</option>
+														
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+												<label for="inputEmail" class="col-lg-2 control-label">产品线分类：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">固定收益类-流动性管理</option>
+													<option value="United Kingdom">固定收益类-债权类</option>
+													<option value="United States">固定收益类-非标类</option>
+													<option value="United Kingdom">固定收益类-固收多策略</option>
+													<option value="United States">权益类-偏股混合型</option>
+													<option value="United Kingdom">权益类-股票型</option>
+													<option value="United States">权益类-权益多策略</option>
+													<option value="United Kingdom">量化类-量化对冲</option>
+													<option value="United States">量化类-指数类</option>
+													<option value="United Kingdom">量化类-量化多策略</option>
+												</select>
+												<div style="height: 1px;"></div>
+												<select class="form-control input-sm" id="ryxz">
+													<option value="United States">--</option>
+														
+													<option value="United States">纯债型</option>
+													<option value="United Kingdom">偏债型-非标增强</option>
+													<option value="United States">偏债型-股票增强</option>
+													<option value="United Kingdom">偏债混合型</option>
+												</select>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="col-lg-2 control-label">项目开始时间：</label>
+											<div class="col-lg-2">
+												<div id="demo-dp-txtinput" class="input-group date">
+													<input class="form-control" type="text"> <span
+														class="input-group-addon"><i
+														class="demo-pli-calendar-4"></i></span>
+												</div>
+											</div>
+											<label class="col-lg-2 control-label">项目结束时间：</label>
+											<div class="col-lg-2">
+												<div id="demo-dp-txtinput1" class="input-group date">
+													<input class="form-control" type="text"> <span
+														class="input-group-addon"><i
+														class="demo-pli-calendar-4"></i></span>
+												</div>
+											</div>
+											
+										</div>
+										
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">债权主体：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">担保主体：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">融资规模(数字)：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">资金投向项目：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">投资期限：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">融资方资金利率：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">利率方式：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">投资人净收益率：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">受托费费率：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">管理费费率：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">托管费费率：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">独立监督费费率：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">投顾费费率：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label class="col-lg-2 control-label">起息日：</label>
+											<div class="col-lg-2">
+												<div id="demo-dp-txtinput2" class="input-group date">
+													<input class="form-control" type="text"> <span
+														class="input-group-addon"><i
+														class="demo-pli-calendar-4"></i></span>
+												</div>
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">托管人：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">独立监督人：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">信用级别：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">债权主体信用级别：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">担保人信用评级：</label>
+											<div class="col-lg-2">
+												<input class="form-control input-sm" id="wjMcWj" type="text"
+													autocomplete="off" maxlength="20">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">项目经理部门主管：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">管理层</option>
+													<option value="United Kingdom">综合部</option>
+													<option value="United States">组合管理</option>
+													<option value="United Kingdom">交易中心</option>
+													<option value="United States">金融市场部</option>
+													<option value="United Kingdom">信用评估部</option>
+													<option value="United States">跨境业务部</option>
+													<option value="United Kingdom">股权投资部</option>
+													<option value="United States">人力资源部</option>
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+											</div>
+											<div style="height: 1px;"></div>
+											<!-- <div class="col-lg-1"></div> -->
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">业务线分管领导：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">管理层</option>
+													<option value="United Kingdom">综合部</option>
+													<option value="United States">组合管理</option>
+													<option value="United Kingdom">交易中心</option>
+													<option value="United States">金融市场部</option>
+													<option value="United Kingdom">信用评估部</option>
+													<option value="United States">跨境业务部</option>
+													<option value="United Kingdom">股权投资部</option>
+													<option value="United States">人力资源部</option>
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+											</div>
+											<div style="height: 1px;"></div>
+											<!-- <div class="col-lg-1"></div> -->
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">市场部员工：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">管理层</option>
+													<option value="United Kingdom">综合部</option>
+													<option value="United States">组合管理</option>
+													<option value="United Kingdom">交易中心</option>
+													<option value="United States">金融市场部</option>
+													<option value="United Kingdom">信用评估部</option>
+													<option value="United States">跨境业务部</option>
+													<option value="United Kingdom">股权投资部</option>
+													<option value="United States">人力资源部</option>
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+											</div>
+											<div style="height: 1px;"></div>
+											<!-- <div class="col-lg-1"></div> -->
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">运营部员工：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">管理层</option>
+													<option value="United Kingdom">综合部</option>
+													<option value="United States">组合管理</option>
+													<option value="United Kingdom">交易中心</option>
+													<option value="United States">金融市场部</option>
+													<option value="United Kingdom">信用评估部</option>
+													<option value="United States">跨境业务部</option>
+													<option value="United Kingdom">股权投资部</option>
+													<option value="United States">人力资源部</option>
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+											</div>
+											<div style="height: 1px;"></div>
+											<!-- <div class="col-lg-1"></div> -->
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">投资品种对口专业员工：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">管理层</option>
+													<option value="United Kingdom">综合部</option>
+													<option value="United States">组合管理</option>
+													<option value="United Kingdom">交易中心</option>
+													<option value="United States">金融市场部</option>
+													<option value="United Kingdom">信用评估部</option>
+													<option value="United States">跨境业务部</option>
+													<option value="United Kingdom">股权投资部</option>
+													<option value="United States">人力资源部</option>
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+											</div>
+											<div style="height: 1px;"></div>
+											<!-- <div class="col-lg-1"></div> -->
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+											<label for="inputEmail" class="col-lg-2 control-label">其他员工：</label>
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">管理层</option>
+													<option value="United Kingdom">综合部</option>
+													<option value="United States">组合管理</option>
+													<option value="United Kingdom">交易中心</option>
+													<option value="United States">金融市场部</option>
+													<option value="United Kingdom">信用评估部</option>
+													<option value="United States">跨境业务部</option>
+													<option value="United Kingdom">股权投资部</option>
+													<option value="United States">人力资源部</option>
+													<option value="United Kingdom">信息科技中心</option>
+												</select>
+											</div>
+											<div style="height: 1px;"></div>
+											<!-- <div class="col-lg-1"></div> -->
+											<div class="col-lg-2">
+												<select class="form-control input-sm" id="bmxz">
+													<option value="United States">--</option>
+													<option value="United States">刘畅</option>
+													<option value="United Kingdom">张阳</option>
+													<option value="United States">迟伟琛</option>
+													<option value="United Kingdom">赵鹏</option>
+													<option value="United States">姜海</option>
+													<option value="United Kingdom">李雪青</option>
+													<option value="United States">李阳</option>
+													<option value="United Kingdom">符江涛</option>
+												</select>
+											</div>
+										</div>
+										
+										
+										<div class="form-group">
+											<label for="inputInitDate" class="col-lg-2 control-label">产品描述：</label>
+											<div class="col-lg-10">
+												<textarea class="form-control" id="describeWj" rows="3"
+													autocomplete="off" maxlength="100"></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputInitDate" class="col-lg-2 control-label">备&nbsp;&nbsp;&nbsp;注：</label>
+											<div class="col-lg-10">
+												<textarea class="form-control" id="describeWj" rows="3"
+													autocomplete="off" maxlength="100"></textarea>
+											</div>
+
+										</div>
+									</fieldset>
+								</form>
+							</div>
+							<div class="panel-footer text-right">
+
+								<!-- <a class="btn btn-default" type="button" onclick="close()"> 关闭33</a> -->
+
+								<a class="btn btn-default " type="button"
+									href="firstpage_left.html">关闭</a> 
+								<a class="btn btn-warning" id="addThlProduct" type="button">新增</a>
+
+							</div>
+						</div>
+					</div>
+					
+					
+					 <div id="tree" class="row" style="display: none;">
+			              <div class="col-md-6">
+			                  <div class="panel">
+			                      <div class="panel-heading">
+			                      	<h4 style="margin-left: 22px;">项目种类管理</h4>
+			                          <span class="tools pull-right">
+			                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+			                                <a href="javascript:;" class="fa fa-times"></a>
+			                            </span>
+			                      </div>
+			                      <div class="panel-body">
+			                          <div id="FlatTree3" class="tree tree-plus-minus tree-solid-line tree-unselectable">
+                              <div class = "tree-folder" style="display:none;">
+                                  <div class="tree-folder-header">
+                                      <i class="fa fa-folder"></i>
+                                      <div class="tree-folder-name"></div>
+                                  </div>
+                                  <div class="tree-folder-content" style="display:none"></div>
+                                  <div class="tree-loader" style="display:none"></div>
+                              </div>
+                              <div class="tree-item" style="display:none;">
+                                  <i class="tree-dot"></i>
+                                  <div class="tree-item-name"></div>
+                              </div>
+                          </div>
+			                      </div>
+			                  </div>
+			              </div>
+			              <div class="col-md-6">
+			                  <div class="panel">
+			                      <div class="panel-heading">
+			                      	<h4 style="margin-left: 27px;">里程碑、任务管理</h4>
+			                          	
+			                          <span class="tools pull-right">
+			                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+			                                <a href="javascript:;" class="fa fa-times"></a>
+			                            </span>
+			                      </div>
+			                      <div class="panel-body">
+			                          <div id="FlatTree4" class="tree tree-no-line">
+			                              <div class = "tree-folder" style="display:none;">
+			                                  <div class="tree-folder-header">
+			                                      <i class="fa fa-folder"></i>
+			                                      <div class="tree-folder-name"></div>
+			                                  </div>
+			                                  <div class="tree-folder-content"></div>
+			                                  <div class="tree-loader" style="display:none;"></div>
+			                              </div>
+			                              <div class="tree-item" style="display:none;">
+			                                  <i class="tree-dot"></i>
+			                                  <div class="tree-item-name"></div>
+			                              </div>
+			                              
+			                          </div>
+			                      </div>
+			                  </div>
+			              </div>
+			          </div>
+			          
+			          <!--2016.12.01新需求页面-->
+			          <div id="detail" style="display: none;">
+	<div class="panel">
+		<div class="panel-heading">
+			<span class="tab-base pull-right" style="line-height: 50px;margin-right: 8%;">
+		<a href="#" onclick="view()"><button
+													class="btn btn-xs btn-primary btn-icon">
+													<i class="psi-pen icon-lg"></i>
+												</button></a>&nbsp;&nbsp;<a href="#"><button
+													class="btn btn-xs btn-success btn-icon">
+													<i class="fa fa-trash-o icon-lg"></i>
+												</button></a>
+									</span>
+
+			<h3 class="panel-title">修改项目信息</h3>
+
+		</div>
+		<div class="panel-body">
+
+			<form class="form-horizontal" id="ffAdd" novalidate name="ffAdd">
+				<fieldset>
+					<div class="form-group">
+						<label for="wjMcWj" class="col-lg-2 control-label">项目名称：</label>
+						<div class="col-lg-4">
+							<input class="form-control input-sm" id="wjMcWj" name="wjMcWj" type="text" value="中意资产-融汇集合资产管理产品（一期）" autocomplete="off" maxlength="20" required>
+						</div>
+						<label for="xmzl" class="col-lg-2 control-label">项目种类：</label>
+						<div class="col-lg-4">
+							<select class="form-control input-sm" id="xmzl" name="xmzl">
+								<option value="United States">不动产投资计划</option>
+								<option value="United Kingdom">资产支持计划</option>
+								<option value="United Kingdom">债权投资计划</option>
+							</select>
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">项目经理：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United Kingdom">信息科技中心</option>
+								<option value="United States">管理层</option>
+								<option value="United Kingdom">综合部</option>
+								<option value="United States">组合管理</option>
+								<option value="United Kingdom">交易中心</option>
+								<option value="United States">金融市场部</option>
+								<option value="United Kingdom">信用评估部</option>
+								<option value="United States">跨境业务部</option>
+								<option value="United Kingdom">股权投资部</option>
+								<option value="United States">人力资源部</option>
+
+							</select>
+							<div style="height: 1px;"></div>
+							<select class="form-control input-sm" id="ryxz">
+								<option value="United Kingdom">赵鹏</option>
+								<option value="United States">刘畅</option>
+								<option value="United Kingdom">张阳</option>
+								<option value="United States">迟伟琛</option>
+								<option value="United States">姜海</option>
+								<option value="United Kingdom">李雪青</option>
+								<option value="United States">李阳</option>
+								<option value="United Kingdom">符江涛</option>
+							</select>
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">投资经理：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United Kingdom">综合部</option>
+								<option value="United States">组合管理</option>
+								<option value="United Kingdom">交易中心</option>
+								<option value="United States">金融市场部</option>
+								<option value="United Kingdom">信用评估部</option>
+								<option value="United States">跨境业务部</option>
+								<option value="United Kingdom">股权投资部</option>
+								<option value="United States">人力资源部</option>
+								<option value="United Kingdom">信息科技中心</option>
+							</select>
+							<div style="height: 1px;"></div>
+							<select class="form-control input-sm" id="ryxz">
+								<option value="United States">刘畅</option>
+								<option value="United Kingdom">张阳</option>
+								<option value="United States">迟伟琛</option>
+								<option value="United Kingdom">赵鹏</option>
+								<option value="United States">姜海</option>
+								<option value="United Kingdom">李雪青</option>
+								<option value="United States">李阳</option>
+								<option value="United Kingdom">符江涛</option>
+							</select>
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">产品线分类：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">固定收益类-流动性管理</option>
+								<option value="United Kingdom">固定收益类-债权类</option>
+								<option value="United States">固定收益类-非标类</option>
+								<option value="United Kingdom">固定收益类-固收多策略</option>
+								<option value="United States">权益类-偏股混合型</option>
+								<option value="United Kingdom">权益类-股票型</option>
+								<option value="United States">权益类-权益多策略</option>
+								<option value="United Kingdom">量化类-量化对冲</option>
+								<option value="United States">量化类-指数类</option>
+								<option value="United Kingdom">量化类-量化多策略</option>
+							</select>
+							<div style="height: 1px;"></div>
+							<select class="form-control input-sm" id="ryxz">
+
+								<option value="United States">纯债型</option>
+								<option value="United Kingdom">偏债型-非标增强</option>
+								<option value="United States">偏债型-股票增强</option>
+								<option value="United Kingdom">偏债混合型</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-2 control-label">项目开始时间：</label>
+						<div class="col-lg-2">
+							<div id="demo-dp-txtinput3" class="input-group date">
+								<input value="2016-11-03" class="form-control" type="text"> <span class="input-group-addon"><i
+														class="demo-pli-calendar-4"></i></span>
+							</div>
+						</div>
+						<label class="col-lg-2 control-label">项目结束时间：</label>
+						<div class="col-lg-2">
+							<div id="demo-dp-txtinput4" class="input-group date">
+								<input class="form-control" type="text" value="2017-06-04"> <span class="input-group-addon"><i
+														class="demo-pli-calendar-4"></i></span>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">债权主体：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">担保主体：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">融资规模(数字)：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">资金投向项目：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">投资期限：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">融资方资金利率：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">利率方式：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">投资人净收益率：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">受托费费率：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">管理费费率：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">托管费费率：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">独立监督费费率：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">投顾费费率：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label class="col-lg-2 control-label">起息日：</label>
+						<div class="col-lg-2">
+							<div id="demo-dp-txtinput5" class="input-group date">
+								<input class="form-control" type="text"> <span class="input-group-addon"><i
+														class="demo-pli-calendar-4"></i></span>
+							</div>
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">托管人：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">独立监督人：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">信用级别：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">债权主体信用级别：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">担保人信用评级：</label>
+						<div class="col-lg-2">
+							<input class="form-control input-sm" id="wjMcWj" type="text" autocomplete="off" maxlength="20">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">项目经理部门主管：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<!--<option value="United States">--</option>-->
+								<option value="United States">管理层</option>
+								<option value="United Kingdom">综合部</option>
+								<option value="United States">组合管理</option>
+								<option value="United Kingdom">交易中心</option>
+								<option value="United States">金融市场部</option>
+								<option value="United Kingdom">信用评估部</option>
+								<option value="United States">跨境业务部</option>
+								<option value="United Kingdom">股权投资部</option>
+								<option value="United States">人力资源部</option>
+								<option value="United Kingdom">信息科技中心</option>
+							</select>
+						</div>
+						<div style="height: 1px;"></div>
+						<!-- <div class="col-lg-1"></div> -->
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">刘畅</option>
+								<option value="United Kingdom">张阳</option>
+								<option value="United States">迟伟琛</option>
+								<option value="United Kingdom">赵鹏</option>
+								<option value="United States">姜海</option>
+								<option value="United Kingdom">李雪青</option>
+								<option value="United States">李阳</option>
+								<option value="United Kingdom">符江涛</option>
+							</select>
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">业务线分管领导：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">管理层</option>
+								<option value="United Kingdom">综合部</option>
+								<option value="United States">组合管理</option>
+								<option value="United Kingdom">交易中心</option>
+								<option value="United States">金融市场部</option>
+								<option value="United Kingdom">信用评估部</option>
+								<option value="United States">跨境业务部</option>
+								<option value="United Kingdom">股权投资部</option>
+								<option value="United States">人力资源部</option>
+								<option value="United Kingdom">信息科技中心</option>
+							</select>
+						</div>
+						<div style="height: 1px;"></div>
+						<!-- <div class="col-lg-1"></div> -->
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United Kingdom">张阳</option>
+								<option value="United States">迟伟琛</option>
+								<option value="United Kingdom">赵鹏</option>
+								<option value="United States">姜海</option>
+								<option value="United Kingdom">李雪青</option>
+								<option value="United States">李阳</option>
+								<option value="United Kingdom">符江涛</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">市场部员工：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">金融市场部</option>
+								<option value="United States">管理层</option>
+								<option value="United Kingdom">综合部</option>
+								<option value="United States">组合管理</option>
+								<option value="United Kingdom">交易中心</option>
+								<option value="United Kingdom">信用评估部</option>
+								<option value="United States">跨境业务部</option>
+								<option value="United Kingdom">股权投资部</option>
+								<option value="United States">人力资源部</option>
+								<option value="United Kingdom">信息科技中心</option>
+							</select>
+						</div>
+						<div style="height: 1px;"></div>
+						<!-- <div class="col-lg-1"></div> -->
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">姜海</option>
+								<option value="United States">刘畅</option>
+								<option value="United Kingdom">张阳</option>
+								<option value="United States">迟伟琛</option>
+								<option value="United Kingdom">赵鹏</option>
+								
+								<option value="United Kingdom">李雪青</option>
+								<option value="United States">李阳</option>
+								<option value="United Kingdom">符江涛</option>
+							</select>
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">运营部员工：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">运营部</option>
+								<option value="United States">管理层</option>
+								<option value="United Kingdom">综合部</option>
+								<option value="United States">组合管理</option>
+								<option value="United Kingdom">交易中心</option>
+								<option value="United States">金融市场部</option>
+								<option value="United Kingdom">信用评估部</option>
+								<option value="United States">跨境业务部</option>
+								<option value="United Kingdom">股权投资部</option>
+								<option value="United States">人力资源部</option>
+								<option value="United Kingdom">信息科技中心</option>
+							</select>
+						</div>
+						<div style="height: 1px;"></div>
+						<!-- <div class="col-lg-1"></div> -->
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">王永伟</option>
+								<option value="United States">刘畅</option>
+								<option value="United Kingdom">张阳</option>
+								<option value="United States">迟伟琛</option>
+								<option value="United Kingdom">赵鹏</option>
+								<option value="United States">姜海</option>
+								<option value="United Kingdom">李雪青</option>
+								<option value="United States">李阳</option>
+								<option value="United Kingdom">符江涛</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">投资品种对口专业员工：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">权益投资部</option>
+								<option value="United States">管理层</option>
+								<option value="United Kingdom">综合部</option>
+								<option value="United States">组合管理</option>
+								<option value="United Kingdom">交易中心</option>
+								<option value="United States">金融市场部</option>
+								<option value="United Kingdom">信用评估部</option>
+								<option value="United States">跨境业务部</option>
+								<option value="United Kingdom">股权投资部</option>
+								<option value="United States">人力资源部</option>
+								<option value="United Kingdom">信息科技中心</option>
+							</select>
+						</div>
+						<div style="height: 1px;"></div>
+						<!-- <div class="col-lg-1"></div> -->
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">陈东</option>
+								<option value="United States">刘畅</option>
+								<option value="United Kingdom">张阳</option>
+								<option value="United States">迟伟琛</option>
+								<option value="United Kingdom">赵鹏</option>
+								<option value="United States">姜海</option>
+								<option value="United Kingdom">李雪青</option>
+								<option value="United States">李阳</option>
+								<option value="United Kingdom">符江涛</option>
+							</select>
+						</div>
+						<label for="inputEmail" class="col-lg-2 control-label">其他员工：</label>
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">--</option>
+								<option value="United States">管理层</option>
+								<option value="United Kingdom">综合部</option>
+								<option value="United States">组合管理</option>
+								<option value="United Kingdom">交易中心</option>
+								<option value="United States">金融市场部</option>
+								<option value="United Kingdom">信用评估部</option>
+								<option value="United States">跨境业务部</option>
+								<option value="United Kingdom">股权投资部</option>
+								<option value="United States">人力资源部</option>
+								<option value="United Kingdom">信息科技中心</option>
+							</select>
+						</div>
+						<div style="height: 1px;"></div>
+						<!-- <div class="col-lg-1"></div> -->
+						<div class="col-lg-2">
+							<select class="form-control input-sm" id="bmxz">
+								<option value="United States">--</option>
+								<option value="United States">刘畅</option>
+								<option value="United Kingdom">张阳</option>
+								<option value="United States">迟伟琛</option>
+								<option value="United Kingdom">赵鹏</option>
+								<option value="United States">姜海</option>
+								<option value="United Kingdom">李雪青</option>
+								<option value="United States">李阳</option>
+								<option value="United Kingdom">符江涛</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputInitDate" class="col-lg-2 control-label">产品描述：</label>
+						<div class="col-lg-10">
+							<textarea class="form-control" id="describeWj" rows="3" autocomplete="off" maxlength="100"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputInitDate" class="col-lg-2 control-label">备&nbsp;&nbsp;&nbsp;注：</label>
+						<div class="col-lg-10">
+							<textarea class="form-control" id="describeWj" rows="3" autocomplete="off" maxlength="100"></textarea>
+						</div>
+
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="panel-footer text-right">
+			<script type="text/javascript">
+			//日期控件相关
+	$('#demo-dp-txtinput3').datepicker({
+		format: "MM dd, yyyy",
+		todayBtn: "linked",
+		autoclose: true,
+		language: 'zh-CN',
+		todayHighlight: true
+	});
+	$('#demo-dp-txtinput4').datepicker({
+		format: "MM dd, yyyy",
+		todayBtn: "linked",
+		autoclose: true,
+		language: 'zh-CN',
+		todayHighlight: true
+	});
+	$('#demo-dp-txtinput5').datepicker({
+		format: "MM dd, yyyy",
+		todayBtn: "linked",
+		autoclose: true,
+		language: 'zh-CN',
+		todayHighlight: true
+	});
+				
+			</script>
+			<a class="btn btn-default " type="button" href="firstpage_left.html">关闭</a>
+			<a class="btn btn-warning" id="addThlProduct" type="button">新增</a>
+		</div>
+	</div>
+</div>
+				</div>
+			</div>
+			<!--===================================================-->
+			<aside id="aside-container">
+                <div id="aside">
+                    <div class="nano has-scrollbar">
+                        <div class="nano-content" tabindex="0" style="right: -15px;">
+                            
+                            <!--Nav tabs-->
+                            <!--================================-->
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="active">
+					                <h3 class="panel-title">操作日志</h3>
+                            </li></ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="demo-asd-tab-1">
+                                    <div class="list-group bg-trans">
+											<a href="#" class="list-group-item">
+												<span class="badge badge-purple badge-icon badge-fw pull-left"></span>2016-11-28 &nbsp;&nbsp;&nbsp;中意资产-融汇集合资产管理产品（一期）&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《主动管理产品可行性研究报告》</span>&nbsp;&nbsp;&nbsp;完成
+											</a>
+											<a href="#" class="list-group-item">
+												<span class="badge badge-info badge-icon badge-fw pull-left"></span>2016-11-27&nbsp;&nbsp;&nbsp;中意资产-融汇集合资产管理产品（二期）&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《各部门会议记录》</span>&nbsp;&nbsp;&nbsp;完成
+											</a>
+											<a href="#" class="list-group-item">
+												<span class="badge badge-purple badge-icon badge-fw pull-left"></span>2016-11-26 &nbsp;&nbsp;&nbsp;中意资产管理有限责任公司-稳健创利3号&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《主动管理产品可行性研究报告》</span>&nbsp;&nbsp;&nbsp;完成
+											</a>
+											<a href="#" class="list-group-item">
+												<span class="badge badge-info badge-icon badge-fw pull-left"></span>2016-11-25&nbsp;&nbsp;&nbsp;	
+中意-浙江新昌钦寸水库项目债权投资计划&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《产品合同》</span>&nbsp;&nbsp;&nbsp;完成
+											</a><a href="#" class="list-group-item">
+												<span class="badge badge-purple badge-icon badge-fw pull-left"></span>2016-11-24 &nbsp;&nbsp;&nbsp;金葵花稳健增盈1号（招行北分）&nbsp;&nbsp;&nbsp;<span style="color: orange;">编写《产品托管方案》</span>&nbsp;&nbsp;&nbsp;完成
+											</a>
+											
+										</div>
+
+
+
+                            </div>
+                        </div>
+                    <!-- <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 981px; transform: translate(0px, 0px);"></div></div> --></div>
+                <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 981px; transform: translate(0px, 0px);"></div></div></div>
+            </div></aside>
+			<nav id="mainnav-container">
+				<div id="mainnav">
+					<div id="mainnav-menu-wrap">
+						<div class="nano">
+							<div class="nano-content"
+								style="background-color: rgb(156, 35, 41);">
+
+								<!--Profile Widget-->
+								<!--================================-->
+								<div id="mainnav-profile" class="mainnav-profile">
+									<div class="profile-wrap">
+										<div class="pad-btm">
+											<img class="img-circle img-sm img-border"
+												src="img/profile-photos/1.png" alt="Profile Picture">
+										</div>
+										<a href="#profile-nav" class="box-block"
+											data-toggle="collapse" aria-expanded="false"> <span
+											class="pull-right dropdown-toggle">
+										</span>
+											<p class="mnp-name">赵鹏 </p><p class="mnp-name">信息科技中心</p>
+										</a>
+									</div>
+								</div>
+								<ul id="mainnav-menu" class="list-group">
+									<!--Menu list item-->
+									<li><a href="#"> <i class="demo-psi-receipt-4"></i> <span
+											class="menu-title">查询管理</span> <i class="arrow"></i>
+									</a> <!--Submenu-->
+										<ul class="collapse">
+											<li><a href="myProtect.html">我的项目</a></li>
+											<li><a href="ui-panels.html">查找项目</a></li>
+											<li><a href="ui-modals.html">按人员查看</a></li>
+											<li><a href="ui-progress-bars.html">查找项目-管理员</a></li>
+											<li><a href="ui-components.html">项目搜索（功能演示）</a></li>
+										</ul></li>
+
+									<!--Menu list item-->
+									<li><a href="#"> <i class="psi-pen"></i> <span
+											class="menu-title">统计报表</span> <i class="arrow"></i>
+									</a> <!--Submenu-->
+										<ul class="collapse">
+											<li><a href="forms-general.html">工作量统计</a></li>
+											<li><a href="forms-components.html">项目跟踪表</a></li>
+										</ul></li>
+									<!--Menu list item-->
+									<li><a href="#"> <i class="demo-psi-receipt-4"></i> <span
+											class="menu-title">项目管理</span> <i class="arrow"></i>
+									</a> <!--Submenu-->
+										<ul class="collapse">
+											<!--<li  class="active-link"><a style="cursor: pointer;"  onclick="tree()">项目种类管理</a></li>-->
+											<li  class="active-link"><a href="firstpage_left.html">投行类产品</a></li>
+										</ul></li>
+									<li class="list-divider"></li>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<footer id="footer">
+
+			<!-- Visible when footer positions are fixed -->
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div class="show-fixed pull-right">
+				You have <a href="#" class="text-bold text-main"><span
+					class="label label-danger">3</span> pending action.</a>
+			</div>
+
+
+
+			<!-- Visible when footer positions are static -->
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div class="hide-fixed pull-right pad-rgt"></div>
+
+
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+			<p class="pad-lft">&#0169; 2016 中意资产</p>
+
+
+
+		</footer>
+		<button class="scroll-top btn">
+			<i class="pci-chevron chevron-up"></i>
+			<tr></tr>
+		</button>
+	</div>
+
+</body>
+<script type="text/javascript">
+	$('#addThlProduct').on('click', function() {
+		//点击新增添加数据
+		var addRow = $('.addRow').html();
+		var addRow1 = '<tr style="background-color:rgb(220,250,250)">' + addRow + '</tr>'
+		//添加新数据
+		$('#bodyCon').prepend(addRow1);
+		$('#add').hide();
+		$('#table_list').show();
+		$('#addbtn').show();
+	});
+	//详情介绍tab
+	$('.detailTabBtn').on('mousemove', function() {	
+			$('#detailTabCon').show();
+			$(this).on('mouseout', function() {
+				$('#detailTabCon').on('mouseout',function(){
+				$('#detailTabCon').hide();
+				})
+			})
+		})
+	//点击详情页关闭跳回
+	$('#closeXmxq').on('click', function() {
+			$('#list_view').hide();
+			$('#table_list').show();
+			$('#title').show();
+			$('#addbtn').show();
+		})
+		//修改时状态改变
+	$('.alter').on('click', function() {
+			$(this).parents('tr').children().eq(1).text('正常完成');
+			$(this).parents('tr').children().eq(2).text('组合管理部-聂小军');
+			$(this).parents('tr').children().eq(3).text('2016-11-15');
+			$(this).parents('tr').children().eq(4).text('2016-11-15');
+			$(this).parents('tr').children().eq(5).html('<a class="btn-link">下载文件最终版</a>')
+		})
+
+		//注意要封装成函数
+	$('#approval1').on('click', function() {
+		$('#state2').show();
+		$('#state2Icon').addClass('bg-danger');
+		$('#state2Icon').next('div').css('color', 'rgb(239,83,80)');
+		$('#state1Icon').removeClass('bg-danger').addClass('bg-primary');
+		$('#state1Icon').next('div').css('color', 'rgb(65,165,245)')
+	})
+	$('#approval2').on('click', function() {
+		$('#state3').show();
+		$('#state3Icon').addClass('bg-danger');
+		$('#state3Icon').next('div').css('color', 'rgb(239,83,80)');
+		$('#state2Icon').removeClass('bg-danger').addClass('bg-primary');
+		$('#state2Icon').next('div').css('color', 'rgb(65,165,245)')
+	})
+	$('#approval3').on('click', function() {
+		$('#state4').show();
+		$('#state4Icon').addClass('bg-danger');
+		$('#state4Icon').next('div').css('color', 'rgb(239,83,80)');
+		$('#state3Icon').removeClass('bg-danger').addClass('bg-primary');
+		$('#state3Icon').next('div').css('color', 'rgb(65,165,245)')
+	})
+	$('#approval4').on('click', function() {
+		$('#state5').show();
+		$('#state5Icon').addClass('bg-danger');
+		$('#state5Icon').next('div').css('color', 'rgb(239,83,80)');
+		$('#state4Icon').removeClass('bg-danger').addClass('bg-primary');
+		$('#state4Icon').next('div').css('color', 'rgb(65,165,245)')
+	})
+	$('#approval5').on('click', function() {
+		$('#state5Icon').removeClass('bg-danger').addClass('bg-primary');
+		$('#state5Icon').next('div').css('color', 'rgb(65,165,245)')
+	})
+	function tree() {
+		$('#list_view').hide();
+		$('#table_list').hide();
+		$('#addbtn').hide();
+		$('#add').hide();
+		$('#tree').show();
+	}
+	function add() {
+		$('#table_list').hide();
+		$('#addbtn').hide();
+		$('#add').show();
+	}
+
+	function view() {
+		$('#table_list').hide();
+		$('#title').hide();
+		$('#list_view').show();
+		$('#detail').hide();
+} 
+	function detail(){
+		$('#detail').show();
+		$('#table_list').hide();
+		$('#title').hide();
+		$('#list_view').hide();
+	}
+	
+//日期控件相关
+	$('#demo-dp-txtinput').datepicker({
+		format: "MM dd, yyyy",
+		todayBtn: "linked",
+		autoclose: true,
+		language: 'zh-CN',
+		todayHighlight: true
+	});
+	$('#demo-dp-txtinput1').datepicker({
+		format: "MM dd, yyyy",
+		todayBtn: "linked",
+		autoclose: true,
+		language: 'zh-CN',
+		todayHighlight: true
+	});
+	$('#demo-dp-txtinput2').datepicker({
+		format: "MM dd, yyyy",
+		todayBtn: "linked",
+		autoclose: true,
+		language: 'zh-CN',
+		todayHighlight: true
+	});
+</script>
+
+
+</html>
+
+
